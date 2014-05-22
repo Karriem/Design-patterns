@@ -6,9 +6,11 @@
 
 package com.karriem.designpatterns.structuralTest;
 
-import com.karriem.designpatterns.structural.proxy.FastThing;
-import com.karriem.designpatterns.structural.proxy.Proxy;
-import org.testng.Assert;
+import com.karriem.designpatterns.structural.decorator.Animal;
+import com.karriem.designpatterns.structural.decorator.GrowlDecorator;
+import com.karriem.designpatterns.structural.decorator.LegDecorator;
+import com.karriem.designpatterns.structural.decorator.LivingAnimal;
+import com.karriem.designpatterns.structural.decorator.WingDecorator;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -20,21 +22,29 @@ import org.testng.annotations.Test;
  *
  * @author Karriem
  */
-public class ProxyNGTest {
+public class DecoratorNGTest {
     
-    public ProxyNGTest() {
+    public DecoratorNGTest() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void proxy() {
+     public void decorator() {
      
-         Proxy proxy = new Proxy();
-         FastThing fastThing = new FastThing();
-         fastThing.sayHello();
-         Assert.assertEquals(proxy.sayHello(), proxy.sayHello());
+         Animal animal = new LivingAnimal();
+         animal.describe();
+         
+         animal = new LegDecorator(animal);
+         animal.describe();
+         
+         animal = new WingDecorator(animal);
+         animal.describe();
+         
+         animal = new GrowlDecorator(animal);
+         animal = new GrowlDecorator(animal);
+         animal.describe();
      }
 
     @BeforeClass

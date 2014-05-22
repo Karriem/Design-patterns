@@ -6,8 +6,7 @@
 
 package com.karriem.designpatterns.structuralTest;
 
-import com.karriem.designpatterns.structural.proxy.FastThing;
-import com.karriem.designpatterns.structural.proxy.Proxy;
+import com.karriem.designpatterns.structural.facade.Facade;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -20,21 +19,23 @@ import org.testng.annotations.Test;
  *
  * @author Karriem
  */
-public class ProxyNGTest {
+public class FacadeNGTest {
     
-    public ProxyNGTest() {
+    public FacadeNGTest() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void proxy() {
+     public void facade() {
      
-         Proxy proxy = new Proxy();
-         FastThing fastThing = new FastThing();
-         fastThing.sayHello();
-         Assert.assertEquals(proxy.sayHello(), proxy.sayHello());
+         Facade facade = new Facade();
+         int x = 3;
+         
+         Assert.assertEquals(facade.cubeX(x), 9);
+         Assert.assertEquals(facade.cubeXTimes2(x), 18);
+         Assert.assertEquals(facade.xToSixthPowerTimes2(x), 162);
      }
 
     @BeforeClass

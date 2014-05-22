@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.karriem.designpatterns.structuralTest;
+package com.karriem.designpatterns.behaviouralTest;
 
-import com.karriem.designpatterns.structural.proxy.FastThing;
-import com.karriem.designpatterns.structural.proxy.Proxy;
+import com.karriem.designpatterns.behavioural.template.HamburgerMeal;
+import com.karriem.designpatterns.behavioural.template.Meal;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -20,21 +20,19 @@ import org.testng.annotations.Test;
  *
  * @author Karriem
  */
-public class ProxyNGTest {
+public class TemplateNGTest {
     
-    public ProxyNGTest() {
+    public TemplateNGTest() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void proxy() {
+     public void template() {
      
-         Proxy proxy = new Proxy();
-         FastThing fastThing = new FastThing();
-         fastThing.sayHello();
-         Assert.assertEquals(proxy.sayHello(), proxy.sayHello());
+         Meal meal1 = new HamburgerMeal();
+         Assert.assertEquals(meal1.doMeal(), meal1.doMeal());
      }
 
     @BeforeClass

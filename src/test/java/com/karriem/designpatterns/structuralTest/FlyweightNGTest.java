@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.karriem.designpatterns.structuralTest;
 
-import com.karriem.designpatterns.structural.proxy.FastThing;
-import com.karriem.designpatterns.structural.proxy.Proxy;
+import com.karriem.designpatterns.structural.flyweight.Flyweight;
+import com.karriem.designpatterns.structural.flyweight.FlyweightFactory;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -20,22 +19,27 @@ import org.testng.annotations.Test;
  *
  * @author Karriem
  */
-public class ProxyNGTest {
-    
-    public ProxyNGTest() {
+public class FlyweightNGTest {
+
+    public FlyweightNGTest() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
-     public void proxy() {
-     
-         Proxy proxy = new Proxy();
-         FastThing fastThing = new FastThing();
-         fastThing.sayHello();
-         Assert.assertEquals(proxy.sayHello(), proxy.sayHello());
-     }
+    @Test
+    public void flyweight() {
+
+        FlyweightFactory flyweightFactory = FlyweightFactory.getInstance();
+
+        Flyweight flyweightAdder = flyweightFactory.getFlyweight("add");
+        Assert.assertEquals(flyweightAdder.doMath(5, 5), 10);
+
+        Flyweight flyweightMutliplier = flyweightFactory.getFlyweight("mutiply");
+        Assert.assertEquals(flyweightMutliplier.doMath(5, 5), 25);
+
+        
+    }
 
     @BeforeClass
     public static void setUpClass() throws Exception {

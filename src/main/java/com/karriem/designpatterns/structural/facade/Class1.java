@@ -4,18 +4,16 @@
  * and open the template in the editor.
  */
 
-package com.karriem.designpatterns.structural.proxy;
-
-import java.util.Date;
+package com.karriem.designpatterns.structural.facade;
 
 /**
  *
  * @author Karriem
  */
-public abstract class Thing {
+public class Class1 {
     
-    public String sayHello(){
+    public int doSomethingComplicated(int x){
         
-        return this.getClass().getSimpleName() + " says howdy at " + new Date();        
+        return x + x + x;
     }
 }

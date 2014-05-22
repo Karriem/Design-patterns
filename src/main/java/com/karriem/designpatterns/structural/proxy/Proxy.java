@@ -21,12 +21,12 @@ public class Proxy {
         System.out.println("Created at proxy at " + new Date());
     }
     
-    public void sayHello(){
+    public String sayHello(){
     
         if (slowThing == null){
             
             slowThing = new SlowThing();
         }        
-        slowThing.sayHello();
+        return slowThing.sayHello();
     } 
 }

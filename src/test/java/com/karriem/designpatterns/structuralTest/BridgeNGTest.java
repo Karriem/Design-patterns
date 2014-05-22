@@ -6,8 +6,11 @@
 
 package com.karriem.designpatterns.structuralTest;
 
-import com.karriem.designpatterns.structural.proxy.FastThing;
-import com.karriem.designpatterns.structural.proxy.Proxy;
+import com.karriem.designpatterns.structural.bridge.BigBus;
+import com.karriem.designpatterns.structural.bridge.BigEngine;
+import com.karriem.designpatterns.structural.bridge.SmallCar;
+import com.karriem.designpatterns.structural.bridge.SmallEngine;
+import com.karriem.designpatterns.structural.bridge.Vehicle;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -20,21 +23,26 @@ import org.testng.annotations.Test;
  *
  * @author Karriem
  */
-public class ProxyNGTest {
+public class BridgeNGTest {
     
-    public ProxyNGTest() {
+    public BridgeNGTest() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
-     public void proxy() {
+     public void bridge() {
      
-         Proxy proxy = new Proxy();
-         FastThing fastThing = new FastThing();
-         fastThing.sayHello();
-         Assert.assertEquals(proxy.sayHello(), proxy.sayHello());
+         Vehicle vehicle = new BigBus(new SmallEngine());
+         vehicle.drive();
+         vehicle.setEngine(new BigEngine());
+         vehicle.drive();
+         
+         vehicle = new SmallCar(new SmallEngine());
+         vehicle.drive();
+         vehicle.setEngine(new BigEngine());
+         vehicle.drive();
      }
 
     @BeforeClass
